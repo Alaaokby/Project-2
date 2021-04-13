@@ -38,7 +38,7 @@ class BooksApp extends React.Component {
           )}
         />
 
-        <Route path="/search" render={(props) => <Search />} />
+        <Route path="/search" render={(props) => <Search books={books} onShelfChange={this.onShelfChange} />} />
         <Route exact path="/404" component={NotFound} />
         <Redirect to="/404" />
       </Switch>
