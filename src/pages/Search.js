@@ -15,11 +15,14 @@ class Search extends Component {
           newBooks: [],
         });
       }
-      const booksMerged = response.map((b, index) =>
-        books.findIndex((b2) => b2.id === b.id) === -1
-          ? b
-          : books[books.findIndex((b2) => b2.id === b.id)]
-      );
+     const booksMerged =
+          response &&
+          response.length > 0 &&
+          response.map((b) =>
+            books.findIndex((b2) => b2.id === b.id) === -1
+              ? b
+              : books[books.findIndex((b2) => b2.id === b.id)]
+          );
 
       this.setState({ newBooks: booksMerged });
     });
