@@ -27,16 +27,11 @@ class Search extends Component {
       this.setState({ newBooks: booksMerged });
     });
   };
-  onShelfChange = (book, shelf) => {
-    update(book, shelf).catch((err) => console.log(err.message));
-    const { newBooks } = this.state;
-    book.shelf = shelf;
-    this.setState({
-      newBooks: [...newBooks.filter((b) => b.id !== book.id), book],
-    });
-  };
+  
 
   render() {
+         const { onShelfChange } = this.props;
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -59,7 +54,7 @@ class Search extends Component {
                 <Book
                   key={book.id}
                   book={book}
-                  onShelfChange={this.onShelfChange}
+                  onShelfChange={onShelfChange}
                 />
               ))}
           </ol>
