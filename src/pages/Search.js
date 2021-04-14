@@ -18,11 +18,11 @@ class Search extends Component {
      const booksMerged =
           response &&
           response.length > 0 &&
-          response.map((b) =>
-            books.findIndex((b2) => b2.id === b.id) === -1
-              ? b
-              : books[books.findIndex((b2) => b2.id === b.id)]
-          );
+          response.map((book) => {
+            const bookOnShelf = books.find((b) => b.id === book.id);
+            book.shelf = bookOnShelf ? bookOnShelf.shelf : "none";
+            return book;
+          });
 
       this.setState({ newBooks: booksMerged });
     });
